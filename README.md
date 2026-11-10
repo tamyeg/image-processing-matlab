@@ -291,6 +291,88 @@ Potential improvements include:
 - Extending experiments to color images.
 - Investigating adaptive image enhancement and filtering methods.
 
+## Results and Demonstration
+
+The MATLAB implementation was tested using two grayscale photographs to evaluate the behavior of five fundamental image processing algorithms.
+
+Each experiment generates figures comparing the original images, manually processed results, and MATLAB's built-in implementations.
+
+The results can be reproduced by running `image_processing.m` with the provided `Photo1.jpg` and `Photo2.jpg` files.
+
+### 1. Histogram Normalization
+
+Histogram normalization expanded the original pixel intensity ranges toward the full grayscale interval of 0–255.
+
+The experiments demonstrated that normalization has a greater visual effect on images with a limited initial intensity range. The manually implemented normalization produced results visually comparable to MATLAB's `imadjust()` function.
+
+### 2. Convolution: Averaging and Sharpening
+
+The 3×3 averaging filter reduced local intensity variations, producing a smoother image while slightly blurring fine details.
+
+The 3×3 sharpening filter enhanced object boundaries and edges but also increased the visibility of noise and intensity variations.
+
+Both operations were compared with MATLAB's `imfilter()` function.
+
+### 3. Gaussian Averaging
+
+Gaussian filtering was evaluated using 3×3 and 5×5 kernels with a standard deviation of σ = 1.
+
+The 3×3 kernel provided moderate smoothing while preserving more local details. The 5×5 kernel incorporated a larger neighborhood, resulting in stronger overall smoothing.
+
+The manual implementations were compared with MATLAB's `fspecial()` and `imfilter()` functions.
+
+### 4. Morphological Erosion
+
+Grayscale erosion was tested using 3×3 and 5×5 square structuring elements.
+
+The operation expanded darker regions and reduced small bright features. The 5×5 structuring element produced a more pronounced effect than the 3×3 element.
+
+The manually calculated results were compared with MATLAB's `imerode()` function.
+
+### 5. Morphological Dilation
+
+Grayscale dilation was evaluated using the same 3×3 and 5×5 square structuring elements.
+
+Unlike erosion, dilation expanded brighter regions and reduced small dark features. The larger structuring element produced stronger modifications to image structures.
+
+The results were compared with MATLAB's `imdilate()` function.
+
+### Summary of Experimental Results
+
+| Algorithm | Main Observation |
+|---|---|
+| Histogram Normalization | Expanded grayscale intensity range and improved contrast where applicable |
+| Averaging Convolution | Smoothed images but reduced fine details |
+| Sharpening Convolution | Enhanced edges while potentially amplifying noise |
+| Gaussian Averaging | Reduced intensity variations; larger kernels produced stronger smoothing |
+| Morphological Erosion | Expanded dark regions and reduced bright features |
+| Morphological Dilation | Expanded bright regions and reduced dark features |
+
+### Reproducing the Results
+
+All experimental results are generated directly by the MATLAB script.
+
+To reproduce the experiments:
+
+1. Download `image_processing.m`, `Photo1.jpg`, and `Photo2.jpg`.
+2. Place all three files in the same directory.
+3. Open MATLAB with the Image Processing Toolbox installed.
+4. Run:
+
+   ```matlab
+   run('image_processing.m')
+   ```
+
+5. Examine the generated figures showing the original images, processed outputs, intensity histograms, and comparisons with MATLAB's built-in functions.
+
+**Note:** The repository does not contain pre-generated result screenshots. All visualizations are generated automatically when the script is executed.
+
+## Conclusion
+
+The experiments demonstrated the effects of intensity normalization, spatial filtering, Gaussian smoothing, and grayscale morphological operations on digital images.
+
+Implementing these algorithms manually and comparing them with MATLAB's built-in functions helped validate their behavior and investigate the influence of kernel size, neighborhood selection, and processing parameters.
+
 ## Author
 
 **Tamara Yegorova**
